@@ -1,8 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace MyCode.Controllers
 {
@@ -13,6 +12,12 @@ namespace MyCode.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
+
+        [HttpGet("/test")]
+        public string Hola()
+        {
+            return "Hello World";
+        }
 
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
@@ -29,8 +34,8 @@ namespace MyCode.Controllers
         public class WeatherForecast
         {
             public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
             public string Summary { get; set; }
+            public int TemperatureC { get; set; }
 
             public int TemperatureF
             {
