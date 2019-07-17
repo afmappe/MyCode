@@ -4,5 +4,246 @@
         <name>MyCode</name>
     </assembly>
     <members>
+        <member name="M:MyCode.Controllers.PasswordController.Generate(MyCode.Password.Commands.GenerateCommand.Request)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MyCode.Controllers.PasswordController.Get">
+            <summary>
+            GET api/values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyCode.Entities.AppSettings">
+            <summary>
+            Application configuration object, which map appSettings section in appsettings.json file
+            </summary>
+        </member>
+        <member name="P:MyCode.Entities.AppSettings.DefaultConnection">
+            <summary>
+            Database connection string
+            </summary>
+        </member>
+        <member name="P:MyCode.Entities.AppSettings.Secret">
+            <summary>
+            JWT key
+            </summary>
+        </member>
+        <member name="T:MyCode.Exceptions.BaseException">
+            <summary>
+            Base exception pattern
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.BaseException.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.BaseException.#ctor(System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="code">Error code</param>
+        </member>
+        <member name="M:MyCode.Exceptions.BaseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="code">Error code</param>
+            <param name="innerException">Inner exception</param>
+        </member>
+        <member name="M:MyCode.Exceptions.BaseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization context
+            </summary>
+            <param name="info">Serialization info</param>
+            <param name="context">Context</param>
+        </member>
+        <member name="P:MyCode.Exceptions.BaseException.CodeText">
+            <summary>
+            Error code as text
+            </summary>
+        </member>
+        <member name="T:MyCode.Exceptions.CommandExceptionHandler">
+            <summary>
+            Generic exception handler for commands
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.CommandExceptionHandler.Handler``1(``0,System.Exception)">
+            <summary>
+            Exception handler that convert command request into a json object
+            </summary>
+            <typeparam name="TRequest">Entity that represent a command request</typeparam>
+            <param name="request">Command request</param>
+            <param name="ex">Exception</param>
+        </member>
+        <member name="T:MyCode.Exceptions.ExceptionHandler">
+            <summary>
+            Generic exception handler
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.ExceptionHandler.Handler(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+             Exception handler that convert and propagate exception
+            </summary>
+            <param name="context">HTTP Context</param>
+            <returns> Task</returns>
+        </member>
+        <member name="M:MyCode.Exceptions.ExceptionHandler.FlattenErrorMessages(System.Exception)">
+            <summary>
+            Colapse inner exceptions
+            </summary>
+            <param name="exception">Exception</param>
+            <returns></returns>
+        </member>
+        <member name="T:MyCode.Exceptions.ValidationErrorCode">
+            <summary>
+            Exception codes for validation problems
+            </summary>
+        </member>
+        <member name="F:MyCode.Exceptions.ValidationErrorCode.ValidationFail">
+            <summary>
+            Validation fail
+            </summary>
+        </member>
+        <member name="T:MyCode.Exceptions.ValidationError">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:MyCode.Exceptions.ValidationError.Description">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:MyCode.Exceptions.ValidationError.Name">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:MyCode.Exceptions.ValidationErrorException">
+            <summary>
+            Exception for validation problems
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.ValidationErrorException.#ctor(System.Collections.Generic.List{MyCode.Exceptions.ValidationError})">
+            <summary>
+            Implementation of <see cref="M:MyCode.Exceptions.BaseException.#ctor(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.ValidationErrorException.#ctor(System.Collections.Generic.List{MyCode.Exceptions.ValidationError},System.Exception)">
+            <summary>
+            Implementation of <see cref="M:MyCode.Exceptions.BaseException.#ctor(System.String,System.Exception)"/>
+            </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.ValidationErrorException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Implementation of <see cref="M:MyCode.Exceptions.BaseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)"/>
+            </summary>
+        </member>
+        <member name="P:MyCode.Exceptions.ValidationErrorException.Code">
+            <summary>
+            Error code
+            </summary>
+        </member>
+        <member name="P:MyCode.Exceptions.ValidationErrorException.Errors">
+            <summary>
+            Error list
+            </summary>
+        </member>
+        <member name="T:MyCode.Exceptions.ValidationErrorResult">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:MyCode.Exceptions.ValidationErrorResult.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)">
+            <summary>
+            Implementation of <see cref="M:Microsoft.AspNetCore.Mvc.IActionResult.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)"/>
+            </summary>
+        </member>
+        <member name="T:MyCode.Password.Commands.GenerateCommand">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:MyCode.Password.Commands.GenerateCommand.Handler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"/>/>
+            </summary>
+        </member>
+        <member name="M:MyCode.Password.Commands.GenerateCommand.Handler.Handle(MyCode.Password.Commands.GenerateCommand.Request,System.Threading.CancellationToken)">
+            <summary>
+            Implementation of <see cref="M:MediatR.IRequestHandler`2.Handle(`0,System.Threading.CancellationToken)"/>/>
+            </summary>
+        </member>
+        <member name="M:MyCode.Password.Commands.GenerateCommand.Handler.Combine(System.Text.StringBuilder,System.String[],System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+             <param name="words"></param>
+             <param name="position"></param>
+        </member>
+        <member name="T:MyCode.Password.Commands.GenerateCommand.Request">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:MyCode.Password.Commands.GenerateCommand.Request.Words">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:MyCode.Password.Commands.GenerateCommand.Response">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:MyCode.Password.Commands.GenerateCommand.Response.Text">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:MyCode.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:MyCode.Startup.Configuration">
+            <summary>
+            <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>
+            </summary>
+        </member>
+        <member name="M:MyCode.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+        </member>
+        <member name="M:MyCode.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+        </member>
+        <member name="M:MyCode.Startup.ConfigureApiDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+            
+             </summary>
+             <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+        </member>
+        <member name="M:MyCode.Startup.ConfigureAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure jwt authentication
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+        </member>
+        <member name="M:MyCode.Startup.ConfigureDependencyInjection(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+            
+             </summary>
+             <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+        </member>
     </members>
 </doc>
