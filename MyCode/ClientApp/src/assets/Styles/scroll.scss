@@ -1,0 +1,29 @@
+$gray_dark_high: #999;
+$gray_dark_low: #ddd;
+$gray_dark_medium: #b8b8b8;
+
+$gray_light_high: #e0e0e0;
+
+::-webkit-scrollbar {
+    /* width */
+    height: 7px;
+    width: 6px;
+    margin-left: 5px;
+}
+
+::-webkit-scrollbar-track {
+    /* Track */
+    background: $gray_light_high;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* Handle */
+    background: $gray_dark_medium;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /* Handle on hover */
+    background: $gray_dark_high;
+}
