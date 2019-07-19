@@ -14,4 +14,8 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onShowDetail(): void {
+    this.showDetail = !this.showDetail;
+  }
+
 }

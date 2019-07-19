@@ -15,62 +15,158 @@
 
         .card {
             border-radius: 8px;
-            height: 300px;
+            box-shadow: 0px -1px 9px 0px;
+            display: flex;
+            flex-direction: column;
+            height: 270px;
             margin: 0 auto;
             overflow: hidden;
-            position: absolute;
-            width: 250px;
+            padding: 10px;
+            position: relative;
+            width: 220px;
             z-index: 1;
-            box-shadow: 0px -1px 9px 0px;
+
+            .user {
+                display: flex;
+                flex-direction: row;
+                height: 60px;
+
+                .image {
+                    color: blue;
+                    width: 50px;
+                    height: 50px;
+                    background-color: grey;
+                    display: block;
+                    margin: 0;
+                    font-size: 55px;
+                    line-height: 40px;
+                }
+
+                .profile {
+                    margin-left: 15px;
+                    margin-right: 5px;
+
+                    .ellipsis {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        width: 135px;
+                    }
+
+                    .title {
+                        font-size: 18px;
+                        line-height: 20px;
+                        color: #7a7a7a;
+                    }
+
+                    .sub-title {
+                        font-size: 14px;
+                        line-height: 14px;
+                        color: #adadad;
+                    }
+                }
+            }
+
+            .text {
+                height: 90px;
+                border-top: 1px solid #c3c3c3;
+                border-bottom: 1px solid #c3c3c3;
+                padding: 5px 0;
+                font-size: 12px;
+                color: #9d9d9d;
+            }
+
+            .buttons {
+                color: #666666;
+                display: flex;
+                display: flex;
+                flex-direction: row;
+                flex-direction: row;
+                font-size: 18px;
+                justify-content: space-between;
+
+            }
         }
 
         .circle {
             display: flex;
-            align-items: center;
             justify-content: center;
             position: absolute;
-            top: 250px;
+            top: 221px;
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: rgb(31, 148, 169);
-            background: linear-gradient(to bottom, rgba(31, 148, 169, 1) 70%, rgba(31, 148, 169, 0) 30%);
+            background: #1f94a9;
+            background: linear-gradient(to bottom, #1f94a9 62%, rgba(31, 148, 169, 0) 20%);
             z-index: 2;
             box-shadow: inset 0px 18px 11px -10px;
 
             .icon {
-
-                width: 50px;
-
+                width: 60px;
+                height: 60px;
+                margin-top: 10px;
+                mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6));
             }
         }
 
         .square {
             align-items: flex-end;
             background: #1f94a9;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             height: 30px;
             justify-content: flex-end;
             position: absolute;
-            top: 300px;
-            width: 220px;
+            top: 270px;
+            width: 190px;
             z-index: 0;
 
-            .text {
-                color: white;
+            .button {
+                cursor: pointer;
+                color: #b5f1ff;
                 margin: 0 5px;
             }
         }
 
         .detail {
-            position: absolute;
-            width: 220px;
-            height: 250px;
-            border-radius: 8px;
             background: linear-gradient(to bottom, #1f94a9 35%, #2bd0ec 100%);
-            top: 355px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            height: 250px;
+            justify-content: center;
+            padding: 0 10px;
+            position: absolute;
+            top: 290px;
+            width: 190px;
             z-index: 5;
+
+            .date {
+                color: #b5f1ff;
+                border-top: 1px solid #3ba9b8;
+                border-bottom: 1px solid #3ba9b8;
+                padding: 5px 0;
+                margin: 10px 0;
+            }
+
+            .text {
+                background-color: transparent;
+                color: #b5f1ff;
+                flex: 1;
+                text-align: left;
+                font-size: 12px;
+                resize: none;
+                border: 0;
+                margin-bottom: 10px;
+            }
+
+            .button {
+                cursor: pointer;
+                color: #b5f1ff;
+                margin: 0;
+                text-align: right;
+            }
 
         }
     }
