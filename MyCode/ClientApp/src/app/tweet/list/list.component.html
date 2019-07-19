@@ -1,35 +1,37 @@
-<div class="list">
+<div class="list-container">
+  <div class="list">
 
-  <div class="tweet">
-    <div class="card">
-      <div class="user">
-        <div class="image">@</div>
-        <div class="profile">
-          <div class="title ellipsis">Lorem ipsum dolor sit amet, consectetuer adipiscin</div>
-          <div class="sub-title ellipsis">@Lorem ipsum dolor sit amet, consectetuer adipiscin</div>
+    <div class="tweet" *ngFor="let tweet of tweets">
+      <div class="card">
+        <div class="user">
+          <div class="image">@</div>
+          <div class="profile">
+            <div class="title ellipsis">Lorem ipsum dolor sit amet, consectetuer adipiscin</div>
+            <div class="sub-title ellipsis">@Lorem ipsum dolor sit amet, consectetuer adipiscin</div>
+          </div>
+        </div>
+        <div class="text">
+          Lorem ipsum dolor si ...
+        </div>
+        <div class="buttons">
+          <span class="image">@</span>
+          <span class="image">@</span>
+          <span class="image">@</span>
         </div>
       </div>
-      <div class="text">
-        Lorem ipsum dolor si ...
+      <div class="circle">
+        <img src="../../../assets/images/tweeter.png" class="icon" alt="Tweeter">
       </div>
-      <div class="buttons">
-        <span class="image">@</span>
-        <span class="image">@</span>
-        <span class="image">@</span>
+      <div class="square">
+        <label class="button" (click)="onShowDetail()" *ngIf="!showDetail">...Detail.....@</label>
+      </div>
+      <div class="detail" *ngIf="showDetail">
+        <span class="date">10:07 AM - 9 Apr 2019</span>
+        <textarea
+          class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu</textarea>
+        <label class="button" (click)="onShowDetail()">@</label>
       </div>
     </div>
-    <div class="circle">
-      <img src="../../../assets/images/tweeter.png" class="icon" alt="Tweeter">
-    </div>
-    <div class="square">
-      <label class="button" (click)="onShowDetail()" *ngIf="!showDetail">...Detail.....@</label>
-    </div>
-    <div class="detail" *ngIf="showDetail">
-      <span class="date">10:07 AM - 9 Apr 2019</span>
-      <textarea
-        class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu</textarea>
-      <label class="button" (click)="onShowDetail()">@</label>
-    </div>
-  </div>
 
+  </div>
 </div>

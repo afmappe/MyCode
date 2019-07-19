@@ -1,8 +1,24 @@
+:host(app-list) {
+    display: flex;
+    flex: 1;
+    background-color: orange;
+}
+
+.list-container {
+    background-color: blue;
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
 .list {
     background-color: gray;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-flow: row wrap;
+    overflow-y: auto;
+    justify-content: space-evenly;
 
     .tweet {
         align-items: center;
@@ -10,8 +26,10 @@
         flex-direction: column;
         position: relative;
         height: 300px;
-        width: 260px;
-        margin: 10px;
+        width: 220px;
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-top: 25px;
 
         .card {
             border-radius: 8px;
