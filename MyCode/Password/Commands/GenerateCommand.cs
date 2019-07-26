@@ -76,9 +76,6 @@ namespace MyCode.Password.Commands
         /// </summary>
         public class Request : IRequest<Response>
         {
-            [JsonIgnore]
-            public int Temp { get; set; }
-
             /// <summary>
             ///
             /// </summary>

@@ -27,7 +27,7 @@ namespace MyCode
         private const string SwaggerApiName = "MyCode API v1";
         private const string SwaggerApiTitle = "MyCode API";
         private const string SwaggerDescription = "ASP.NET Core Web API";
-        private const string SwaggerUrl = "/swagger/v1/swagger.json";
+        private const string SwaggerUrl = "/docs/v1/docs.json";
 
         /// <summary>
         /// Default Constructor
@@ -57,9 +57,13 @@ namespace MyCode
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseSwagger();
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "docs/{documentName}/docs.json";
+            });
             app.UseSwaggerUI(c =>
             {
+                c.RoutePrefix = "docs";
                 c.SwaggerEndpoint(SwaggerUrl, SwaggerApiName);
             });
 
