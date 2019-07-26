@@ -74,27 +74,26 @@ namespace MyCode.Password.Commands
         /// <summary>
         ///
         /// </summary>
-        [JsonObject]
         public class Request : IRequest<Response>
         {
+            [JsonIgnore]
+            public int Temp { get; set; }
+
             /// <summary>
             ///
             /// </summary>
             [Required]
-            [JsonProperty("words")]
             public string[] Words { get; set; }
         }
 
         /// <summary>
         ///
         /// </summary>
-        [JsonObject]
         public class Response
         {
             /// <summary>
             ///
             /// </summary>
-            [JsonProperty("text")]
             public string Text { get; set; }
         }
     }

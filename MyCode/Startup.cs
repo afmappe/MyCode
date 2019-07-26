@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyCode.Entities;
 using MyCode.Exceptions;
 using MyCode.Password.Commands;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Diagnostics;
@@ -88,7 +89,12 @@ namespace MyCode
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             ConfigureAuthentication(services);
             ConfigureDependencyInjection(services);
@@ -201,7 +207,7 @@ namespace MyCode
         /// <param name="services"><see cref="IServiceCollection"/></param>
         private void ConfigureDependencyInjection(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMediatR(typeof(GenerateCommand));
         }
     }

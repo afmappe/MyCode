@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MyCode.Password.Commands;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MyCode.Controllers
@@ -23,6 +25,8 @@ namespace MyCode.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
+        [SwaggerResponse((int)HttpStatusCode.OK, "")]
+        [SwaggerResponse((int)HttpStatusCode.InternalServerError, "")]
         public async Task<GenerateCommand.Response> Generate(GenerateCommand.Request request)
         {
             return await Mediator.Send(request);
