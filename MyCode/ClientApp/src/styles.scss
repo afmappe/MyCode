@@ -1,2 +1,12 @@
-@import './assets/Styles/reset.scss';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import './assets/Styles/scroll.scss';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

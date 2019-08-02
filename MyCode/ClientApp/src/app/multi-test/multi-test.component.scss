@@ -1,0 +1,31 @@
+.form-c {
+
+    .list {
+
+        input[type=text] {
+            outline: none;
+        }
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+        grid-row-gap: 20px;
+        grid-column-gap: 10px;
+        list-style: none;
+
+        .token {
+            align-items: center;
+            display: flex;
+            border: 1px solid gray;
+            border-radius: 10px;
+            width: 100%;
+
+            .text {
+                background-color: transparent;
+                border: none;
+                margin-right: 5px;
+                width: 100%;
+            }
+        }
+
+    }
+}

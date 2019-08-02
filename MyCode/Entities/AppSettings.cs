@@ -6,13 +6,13 @@
     public class AppSettings
     {
         /// <summary>
-        /// Database connection string
+        /// JWT Audience
         /// </summary>
-        public string DefaultConnection { get; set; }
+        public string Audience { get; set; }
 
         /// <summary>
         /// JWT key
         /// </summary>
-        public string Secret { get; set; }
+        public string Key { get; set; }
     }
 }

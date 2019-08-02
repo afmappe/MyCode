@@ -22,12 +22,12 @@
             Application configuration object, which map appSettings section in appsettings.json file
             </summary>
         </member>
-        <member name="P:MyCode.Entities.AppSettings.DefaultConnection">
+        <member name="P:MyCode.Entities.AppSettings.Audience">
             <summary>
-            Database connection string
+            JWT Audience
             </summary>
         </member>
-        <member name="P:MyCode.Entities.AppSettings.Secret">
+        <member name="P:MyCode.Entities.AppSettings.Key">
             <summary>
             JWT key
             </summary>
@@ -203,6 +203,21 @@
              </summary>
         </member>
         <member name="P:MyCode.Password.Commands.GenerateCommand.Response.Text">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:MyCode.Services.EncryptionService.DefaultSalt">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:MyCode.Services.EncryptionService.EncryptionKey">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:MyCode.Services.EncryptionService.Iterations">
              <summary>
             
              </summary>

@@ -35,7 +35,7 @@ namespace MyCode.Controllers
         public string Login()
         {
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            byte[] key = Encoding.ASCII.GetBytes(AppSettings.Secret);
+            byte[] key = Encoding.ASCII.GetBytes(AppSettings.Key);
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -43,7 +43,7 @@ namespace MyCode.Controllers
                             new Claim(ClaimTypes.NameIdentifier, "1"),
                             new Claim(ClaimTypes.Role, "Admin")
                 }),
-                Audience = "Test_Audience",
+                Audience = AppSettings.Audience,
                 Issuer = "Andres",
                 Expires = DateTime.UtcNow.AddMinutes(60),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

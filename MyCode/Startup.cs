@@ -13,6 +13,7 @@ using MyCode.Password.Commands;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -23,6 +24,7 @@ namespace MyCode
 {
     public class Startup
     {
+        private const string ConfigFileName = "appsettings";
         private const string SaggerApiVersion = "v1";
         private const string SwaggerApiName = "MyCode API v1";
         private const string SwaggerApiTitle = "MyCode API";
@@ -36,7 +38,8 @@ namespace MyCode
         {
             IConfigurationBuilder builder = new ConfigurationBuilder()
                  .SetBasePath(env.ContentRootPath)
-                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                 .AddJsonFile($"{ConfigFileName}.json", optional: true, reloadOnChange: true)
+                 .AddJsonFile($"{ConfigFileName}.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                  .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -138,6 +141,17 @@ namespace MyCode
                 });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme()
+                {
+                    Description = "JWT Authorization header {token}",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Bearer", new string[] { } }
+                });
                 c.IncludeXmlComments(xmlPath);
             });
         }
@@ -152,7 +166,7 @@ namespace MyCode
             services.Configure<AppSettings>(appSettingsSection);
 
             AppSettings appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(appSettings.Key);
 
             services.AddAuthentication(x =>
             {
@@ -160,14 +174,15 @@ namespace MyCode
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
+                options.Audience = appSettings.Audience;
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateAudience = true,
                     ValidateIssuer = false,
-                    ValidateAudience = false,
+                    ValidateIssuerSigningKey = true,
                     ValidateLifetime = true,
                     //ClockSkew = TimeSpan.Zero //the default for this setting is 5 minutes
                 };
@@ -196,7 +211,7 @@ namespace MyCode
                         }
                         else
                         {
-                            Trace.WriteLine("Error Unknown Token");
+                            Trace.WriteLine("Invalid Token");
                         }
 
                         return Task.CompletedTask;
