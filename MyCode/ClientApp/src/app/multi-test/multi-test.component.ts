@@ -1,8 +1,11 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, timer } from 'rxjs';
 import { delay } from 'rxjs/operators';
+
+import { ConfirmationDialogComponent, DialogTemp } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-multi-test',
@@ -21,6 +24,7 @@ export class MultiTestComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private dialog: MatDialog,
     private toastr: ToastrService
   ) { }
 
@@ -76,6 +80,23 @@ export class MultiTestComponent implements OnInit, OnDestroy, AfterViewInit {
       .onTap
       .pipe(delay(1))
       .subscribe(() => this.toasterClickedHandler());;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: 'auto',
+      data: new DialogTemp('Title', 'Do you confirm the deletion of this data?')
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+      }
+      else{
+        console.log('No clicked');
+      }
+    });
   }
 
   toasterClickedHandler() {
