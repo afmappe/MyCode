@@ -1,13 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription, timer } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-multi-test',
   templateUrl: './multi-test.component.html',
   styleUrls: ['./multi-test.component.scss']
 })
-export class MultiTestComponent implements OnInit, OnDestroy {
+export class MultiTestComponent implements OnInit, OnDestroy, AfterViewInit {
 
   form: FormGroup;
   sub: Subscription;
@@ -18,7 +20,8 @@ export class MultiTestComponent implements OnInit, OnDestroy {
   seconds: number;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   public get items(): any {
@@ -57,11 +60,26 @@ export class MultiTestComponent implements OnInit, OnDestroy {
 
   }
 
+  ngAfterViewInit(): void {
+
+  }
+
   ngOnDestroy(): void {
     if (this.sub) {
       this.sub.unsubscribe();
       this.sub = null;
     }
+  }
+
+  onError(): void {
+    this.toastr.error('Hello World', 'Hello Title')
+      .onTap
+      .pipe(delay(1))
+      .subscribe(() => this.toasterClickedHandler());;
+  }
+
+  toasterClickedHandler() {
+    console.log('Toastr clicked');
   }
 
   public addItem(): void {

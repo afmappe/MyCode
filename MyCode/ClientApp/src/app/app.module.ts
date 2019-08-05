@@ -13,6 +13,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +49,14 @@ import { TweetModule } from './tweet/tweet.module';
     MatSortModule,
     MatTableModule,
     ReactiveFormsModule,
-    TweetModule
+    TweetModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      preventDuplicates: true,
+      progressAnimation: 'increasing',
+      progressBar: true,
+      timeOut: 10000,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
